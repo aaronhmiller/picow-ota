@@ -26,6 +26,7 @@ def beat1(timer):
 
 def beat2(timer):
     dash(); dot(); dash(); dot()
+    time.sleep(0.5) #pause
     
 def tick(timer):
     led.toggle()
