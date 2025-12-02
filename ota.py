@@ -100,7 +100,11 @@ class OTAUpdater:
         self.connect_wifi()
 
         print(f'Checking for latest version... on {self.version_url}')
-        response = urequests.get(self.version_url)
+        headers = {
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache"
+        }
+        response = urequests.get(self.version_url, headers=headers)
         
         data = json.loads(response.text)
         
