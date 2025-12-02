@@ -10,4 +10,4 @@ led = machine.Pin("LED", machine.Pin.OUT)
 def tick(timer):
     led.toggle()
 
-Timer().init(freq=2, callback=tick) # call tick twice a sec
+Timer().init(freq=10, callback=tick) # call tick twice a sec
