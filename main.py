@@ -7,7 +7,26 @@ ota_updater.download_and_install_update_if_available()
 from machine import Pin, Timer
 led = machine.Pin("LED", machine.Pin.OUT)
 
+def dot():
+    led.value(1)
+    time.sleep(0.1)
+    led.value(0)
+    time.sleep(0.1)
+
+def dash():
+    led.value(1)
+    time.sleep(0.3)
+    led.value(0)
+    time.sleep(0.1)
+    
+def beat1(timer):
+    dot(); dot(); dot(); dash() #5th symphony-like?
+    time.sleep(0.5) #pause between calls
+
+def beat2(timer):
+    dash(); dot(); dash(); dot
+    
 def tick(timer):
     led.toggle()
 
-Timer().init(freq=2, callback=tick) # call tick twice a sec
+Timer().init(freq=2, callback=beat1) # call tick twice a sec
