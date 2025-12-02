@@ -102,7 +102,8 @@ class OTAUpdater:
         print(f'Checking for latest version... on {self.version_url}')
         headers = {
             "Cache-Control": "no-cache",
-            "Pragma": "no-cache"
+            "Pragma": "no-cache",
+            "Expires": "0"
         }
         response = urequests.get(self.version_url, headers=headers)
         
