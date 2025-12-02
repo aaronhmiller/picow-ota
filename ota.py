@@ -3,7 +3,7 @@ import urequests
 import os
 import json
 import machine
-from time import sleep
+from time import sleep, time
 
 class OTAUpdater:
     """ This class handles OTA updates. It connects to the Wi-Fi, checks for updates, downloads and installs them."""
@@ -49,7 +49,7 @@ class OTAUpdater:
         """ Fetch the latest code from the repo, returns False if not found."""
         
         # Fetch the latest code from the repo.
-        response = urequests.get(self.firmware_url)
+        response = urequests.get(self.firmware_url + f'?t={time()}')
         if response.status_code == 200:
             print(f'Fetched latest firmware code, status: {response.status_code}, -  {response.text}')
     
@@ -105,7 +105,7 @@ class OTAUpdater:
             "Pragma": "no-cache",
             "Expires": "0"
         }
-        response = urequests.get(self.version_url, headers=headers)
+        response = urequests.get(self.version_url + f'?t={time()}', headers=headers)
         
         data = json.loads(response.text)
         
