@@ -8,15 +8,15 @@ from machine import Pin, Timer
 led = machine.Pin("LED", machine.Pin.OUT)
 
 def dot():
-    led.value(1)
+    led.on()
     time.sleep(0.1)
-    led.value(0)
+    led.off()
     time.sleep(0.1)
 
 def dash():
-    led.value(1)
+    led.on()
     time.sleep(0.3)
-    led.value(0)
+    led.off()
     time.sleep(0.1)
     
 def beat1(timer):
@@ -29,4 +29,4 @@ def beat2(timer):
 def tick(timer):
     led.toggle()
 
-Timer().init(freq=2, callback=beat1) # call tick twice a sec
+Timer().init(freq=2, callback=beat2) # call tick twice a sec
