@@ -19,16 +19,16 @@ def dash():
     time.sleep(0.3)
     led.off()
     time.sleep(0.1)
-    
-def beat1(timer):
+   
+def beat(timer):
     dot(); dot(); dot(); dash() #5th symphony-like?
     time.sleep(0.5) #pause between calls
 
-def beat2(timer):
-    dash(); dot(); dash(); dot()
+def taeb(timer):
+    dash(); dash(); dash(); dot()
     time.sleep(0.5) #pause
     
 def tick(timer):
     led.toggle()
 
-Timer().init(freq=2, callback=beat2) # call tick twice a sec
+Timer().init(freq=2, callback=taeb) # call twice a sec 
